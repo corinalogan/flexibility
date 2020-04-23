@@ -1,0 +1,181 @@
+---
+title: Comparing behavioral flexibility across species. Does it work differently in species that rapidly expand their geographic range?
+author: 
+- '[Logan CJ](http://CorinaLogan.com)^1^'
+- '[Deffner D](https://www.eva.mpg.de/ecology/staff/dominik-deffner/index.html)^1^'
+date: '`r Sys.Date()`'
+output:
+  html_document: 
+    toc: true
+    toc_depth: 4
+    toc_float: 
+      collapsed: false
+    code_folding: hide 
+  md_document: 
+    toc: true
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
+  github_document: 
+    toc: true
+bibliography: /Users/corina/GitHub/grackles/Files/MyLibrary.bib
+csl: /Users/corina/GitHub/grackles/Files/behavioral-ecology.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Make code wrap text so it doesn't go off the page when Knitting to PDF
+library(knitr)
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+##### Affiliations: 
+1) Max Planck Institute for Evolutionary Anthropology
+
+*Corresponding author: corina_logan@eva.mpg.de
+
+***Click [here](https://github.com/corinalogan/flexibility/blob/master/Files/xsppflex.Rmd) for the version-tracked reproducible manuscript (.Rmd file)***
+
+### ABSTRACT
+
+It is generally thought that behavioral flexibility, the ability to change behavior when circumstances change, plays an important role in the ability of a species to rapidly expand their geographic range (e.g., [@lefebvre1997feeding], [@griffin2014innovation], [@chow2016practice], [@sol2000behavioural], [@sol2002behavioural], [@sol2005big], [@sol2007big]). However, it is alternatively possible that an increase in the amount of suitable habitat can be the primary facilitator for a range expansion. We compare two parameters of behavioral flexibility across a wide range of taxa to assess the roles of flexibility and habitat change in species that do and do not rapidly expand their geographic range. We first aim to identify the parameters (e.g., learning speed and amount of exploration) involved in behavioral flexibility (as measured by reversal learning experiments) to obtain a model that compares flexibility across species without picking up noise that could be due to differences in methodology. Secondly, we aim to investigate whether those species that have rapidly expanded their geographic range also have differences in their flexibility parameters. Results will elucidate whether rapid geographic range expansions might require behavioral flexibility or whether they are facilitated by the alignment of a species' natural behaviors with an increase in or an introduction to suitable habitat that does not require individuals to alter their behavior to access resources.
+
+### A. STATE OF THE DATA
+
+This preregistration was written (Apr 2020) after beginning to identify parameters involved in behavioral flexibility from two data sets (great-tailed grackles and New Zealand robins), and prior to incorporating any other data sets into the exploration. *[This preregistration was submitted in ??? 2020 to PCI Ecology for pre-study peer review. - Dominik - let's discuss whether we need pre-study peer review on this]*
+
+### B. HYPOTHESES
+
+#### H1: Behavioral flexibility (measured by reversal learning experiments) can be represented as a combination of parameters, such as learning speed and amount of exploration. These parameters can be used to generate a model that compares flexibility across species without picking up noise that could be due to differences in methodology. 
+
+**Prediction 1:** We are able to identify flexibility parameters and test for their reliability using a few data sets from diverse taxa.
+
+**Prediction 1 alternative 1:** We are not able to identify flexibility parameters or test for their reliability using a few data sets from diverse taxa.
+
+**Table 1.** The parameters we explored and what they mean.  
+
+```{r table1, eval=FALSE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
+d <- read.csv ("/Users/corina/GitHub/flexibility/Files/xsppflex_Table1.csv", header=F, sep=",", stringsAsFactors=F) 
+
+library(reactable)
+reactable(d, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE,
+          columns = list(
+            V1 = colDef(name="Site"),
+            V2 = colDef(name="Range position"),
+            V3 = colDef(name="Breeding since"),
+            V4 = colDef(name="Number of years breeding"),
+            V5 = colDef(name="Average number of generations"),
+            V6 = colDef(name="Citation")
+          ))
+```
+
+
+#### H2: Those species that have rapidly expanded their geographic range will show differences in their flexibility parameters compared with species that have not rapidly expanded their range.
+
+**Prediction 2:** If a change in behavior is facilitating range expansions, then we predict that species that have undergone a range expansion will learn faster and explore more than species that have not undergone a rapid range expansion. 
+
+**Prediction 2 alternative 1:** If a change in behavior is not the main facilitator of geographic range expansions, then we predict that there will be no differences in the flexibility parameters across species that have undergone a rapid range expansion and those that have not. It is also possible that geographically restricted species may require flexibility to be able to remain in their suitable habitat, thus contributing to the lack of a difference in flexibility parameters.
+
+**Prediction 2 alternative 2:** If a change in behavior is not the main facilitator of geographic range expansions, and if geographically restricted species require flexibility to be able to remain in their suitable habitat, then we predict that species that have not undergone a rapid range expansion will learn faster and explore more than species that have rapidly expanded. *[I need to make this more distinct from P2 alt 1 - or maybe I can't tell them apart...]*
+
+
+### C. METHODS
+
+#### Planned Sample
+	
+We will search through the literature for reversal learning experiments and attempt to obtain trial-level data for the individuals in these studies for use in our investigation. If these data are not published, we will contact the authors to request the contribution of their data to this investigation. Our aims are to 1) include data from a diverse range of taxa, including humans, and 2) have a sample where roughly half of the species have rapidly expanded their geographic range while the other half has not.
+
+#### Sample size rationale
+	
+*[Dominik - can we do some simulations to determine the minimum number of species needed to obtain robust results?]*
+
+#### Data collection stopping rule
+	
+We will stop collecting data once we have data for 40 species. If we are not able to obtain data for 40 species (because the data are not published, are no longer available, or authors are unwilling to share), we will stop collecting data once we have obtained the data that is the most likely to be obtainable. 
+
+#### Protocols
+
+ - **Identifying species that have undergone a geographic range expansion**: we will use the IUCN Red List of Threatened Species classification for each species to determine whether it has expanded its range (classified as: least concern) or not (i.e., near threatened, vulnerable, endangered, critically endangered, extinct in the wild).
+ - **Parameters we investigated**
+    - Learning speed:
+    - Exploration: 
+    - Learning strategy (within individual learning rate changes over time)
+
+#### Open data
+
+The data involved in this study are either already published openly, or obtained directly from the authors. In the latter case, we will attempt to publish the data we use in the Knowledge Network for Biocomplexity's data repository. However, this will depend on the wishes of the authors who own the data.
+
+#### Randomization and counterbalancing 
+
+No randomization or counterbalancing is involved in this investigation.
+
+#### Blinding of conditions during analysis
+
+No blinding is involved in this investigation.
+
+### D. ANALYSIS PLAN
+
+Analyses will be conducted in R (current version `r getRversion()`; @rcoreteam) and Stan (version 2.18, @carpenter2017stan). 
+
+#### H1: identifying parameters
+
+**Table 2.** The species included in our analyses and their associated flexibility parameters (from reversal learning experiments).  
+
+```{r table2, eval=FALSE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
+d <- read.csv ("/Users/corina/GitHub/flexibility/Files/xsppflex_Table2.csv", header=F, sep=",", stringsAsFactors=F) 
+
+library(reactable)
+reactable(d, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE,
+          columns = list(
+            V1 = colDef(name="Site"),
+            V2 = colDef(name="Range position"),
+            V3 = colDef(name="Breeding since"),
+            V4 = colDef(name="Number of years breeding"),
+            V5 = colDef(name="Average number of generations"),
+            V6 = colDef(name="Citation")
+          ))
+```
+
+#### H2: cross-species comparison
+
+*Response variables*
+
+1) Learning rate
+
+2) Learning strategies
+
+3) Exploration
+
+One model will be run for each response variable
+
+*Explanatory variable*
+
+1) Rapidly expanded its geographic range (yes, no)
+
+
+### E. ETHICS
+
+This research did not require any permits because it uses data that were already collected as part of other investigations.
+
+### F. AUTHOR CONTRIBUTIONS
+
+**Logan:** Hypothesis development, data collection (from the literature and authors), data analysis and interpretation, write up, revising/editing, materials/funding.
+
+**Deffner:** Hypothesis development, data collection (from the literature and authors), data analysis and interpretation, write up, revising/editing.
+
+### G. FUNDING
+
+This research is funded by the Department of Human Behavior, Ecology and Culture at the Max Planck Institute for Evolutionary Anthropology.
+
+### H. CONFLICT OF INTEREST DISCLOSURE
+
+We, the authors, declare that we have no financial conflicts of interest with the content of this article. CJ Logan is a Recommenders and on the Managing Board at PCI Ecology.
+
+### I. ACKNOWLEDGEMENTS
+
+
+
+### J. [REFERENCES](MyLibrary.bib)
