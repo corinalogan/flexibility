@@ -98,7 +98,7 @@ We will stop collecting data once we have data for 40 species. If we are not abl
 
 #### Protocols
 
- - **Identifying species that have undergone a geographic range expansion**: we will use the IUCN Red List of Threatened Species classification for each species to determine whether it has expanded its range (classified as: least concern) or not (i.e., near threatened, vulnerable, endangered, critically endangered, extinct in the wild).
+ - **Identifying species that have undergone a geographic range expansion**: we will use the IUCN Red List of Threatened Species classification for each species to determine whether it has expanded its range (classified as: least concern) or not (i.e., near threatened, vulnerable, endangered, critically endangered, extinct in the wild). *[CL needs to find a database that lists species according to whether they have expanded their range or not. IUCN Red List classifications won't work for this]*
  - **Parameters we investigated**
     - Learning speed:
     - Exploration: 
