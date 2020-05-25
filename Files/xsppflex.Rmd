@@ -57,19 +57,12 @@ This preregistration was written (Apr 2020) after beginning to identify paramete
 
 **Table 1.** The parameters we explored and what they mean.  
 
-```{r table1, eval=FALSE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
-d <- read.csv ("/Users/corina/GitHub/flexibility/Files/xsppflex_Table1.csv", header=F, sep=",", stringsAsFactors=F) 
+```{r table1, eval=TRUE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
+d <- read.csv(url("https://raw.githubusercontent.com/corinalogan/flexibility/master/Files/xsppflex_Table1.csv"), header=T, sep=",", stringsAsFactors=F) 
+dat<-data.frame(d)
 
 library(reactable)
-reactable(d, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE,
-          columns = list(
-            V1 = colDef(name="Site"),
-            V2 = colDef(name="Range position"),
-            V3 = colDef(name="Breeding since"),
-            V4 = colDef(name="Number of years breeding"),
-            V5 = colDef(name="Average number of generations"),
-            V6 = colDef(name="Citation")
-          ))
+reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE)
 ```
 
 
