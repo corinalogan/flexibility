@@ -65,6 +65,16 @@ library(reactable)
 reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE)
 ```
 
+**Table 2.** Differences in reversal learning experimental designs and how these differences might affect our ability to make predictions.  
+
+```{r table2, eval=TRUE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
+d <- read.csv(url("https://raw.githubusercontent.com/corinalogan/flexibility/master/Files/xsppflex_Table1.csv"), header=T, sep=",", stringsAsFactors=F) 
+dat<-data.frame(d)
+
+library(reactable)
+reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE)
+```
+
 
 #### H2: Those species that have rapidly expanded their geographic range will show differences in their flexibility parameters compared with species that have not rapidly expanded their range.
 
