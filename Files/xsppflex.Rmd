@@ -65,10 +65,10 @@ library(reactable)
 reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE)
 ```
 
-**Table 2.** Differences in reversal learning experimental designs and how these differences might affect our ability to make predictions.  
+**Table 2.** Differences in reversal learning experimental designs and how these differences affect the robustness of our model.  
 
 ```{r table2, eval=TRUE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
-d <- read.csv(url("https://raw.githubusercontent.com/corinalogan/flexibility/master/Files/xsppflex_Table1.csv"), header=T, sep=",", stringsAsFactors=F) 
+d <- read.csv(url("https://raw.githubusercontent.com/corinalogan/flexibility/master/Files/xsppflex_Table2.csv"), header=T, sep=",", stringsAsFactors=F) 
 dat<-data.frame(d)
 
 library(reactable)
@@ -127,7 +127,7 @@ Analyses will be conducted in R (current version `r getRversion()`; @rcoreteam) 
 
 **Table 2.** The species included in our analyses and their associated flexibility parameters (from reversal learning experiments).  
 
-```{r table2, eval=FALSE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
+```{r table3, eval=FALSE, warning=FALSE, results='asis', echo=TRUE, include=TRUE}
 d <- read.csv ("/Users/corina/GitHub/flexibility/Files/xsppflex_Table2.csv", header=F, sep=",", stringsAsFactors=F) 
 
 library(reactable)
