@@ -5,17 +5,17 @@ author:
 - '[Deffner D](https://www.eva.mpg.de/ecology/staff/dominik-deffner/index.html)^1^'
 date: '`r Sys.Date()`'
 output:
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
+  md_document: 
+    toc: true
   html_document: 
     toc: true
     toc_depth: 4
     toc_float: 
       collapsed: false
     code_folding: hide 
-  md_document: 
-    toc: true
-  pdf_document:
-    keep_tex: yes
-    latex_engine: xelatex
   github_document: 
     toc: true
 bibliography: /Users/corina/GitHub/grackles/Files/MyLibrary.bib
@@ -41,13 +41,19 @@ opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 
 ### ABSTRACT
 
-It is generally thought that behavioral flexibility, the ability to change behavior when circumstances change, plays an important role in the ability of a species to rapidly expand their geographic range (e.g., [@lefebvre1997feeding], [@griffin2014innovation], [@chow2016practice], [@sol2000behavioural], [@sol2002behavioural], [@sol2005big], [@sol2007big]). However, it is alternatively possible that an increase in the amount of suitable habitat can be the primary facilitator for a range expansion. We compare two parameters of behavioral flexibility across a wide range of taxa to assess the roles of flexibility and habitat change in species that do and do not rapidly expand their geographic range. We first aim to identify the parameters (e.g., learning speed and amount of exploration) involved in behavioral flexibility (as measured by reversal learning experiments) to obtain a model that compares flexibility across species without picking up noise that could be due to differences in methodology. Secondly, we aim to investigate whether those species that have rapidly expanded their geographic range also have differences in their flexibility parameters. Results will elucidate whether rapid geographic range expansions might require behavioral flexibility or whether they are facilitated by the alignment of a species' natural behaviors with an increase in or an introduction to suitable habitat that does not require individuals to alter their behavior to access resources.
+It is generally thought that behavioral flexibility, the ability to change behavior when circumstances change, plays an important role in the ability of a species to rapidly expand their geographic range (e.g., [@lefebvre1997feeding], [@griffin2014innovation], [@chow2016practice], [@sol2000behavioural], [@sol2002behavioural], [@sol2005big], [@sol2007big]). However, it is alternatively possible that an increase in the amount of suitable habitat can be the primary facilitator for a range expansion with behavioral flexibility playing only a minor role. To investigate this possible role of behavioral flexibility across a wide range of taxa, we aim to systematically compare behavioral flexibility in species that do and do not rapidly expand their geographic range. We will collect individual-level data from reversal learning experiments, a standard test of behavioral flexibility, coming from at least XXX different species. Using computational reinforcement-based learning models on those data, we can formally define metrics of behavioral flexibility using 2 key parameters (updating and exploration rate) as well as their temporal dynamics. With those theory-based metrics, we are able to compare flexibility across species without picking up noise that could be due to differences in methodology.Results will elucidate whether rapid geographic range expansions might require behavioral flexibility or whether they are facilitated by the alignment of a species' natural behaviors with an increase in or an introduction to suitable habitat that does not require individuals to alter their behavior to access resources.
 
 ### A. STATE OF THE DATA
 
 This preregistration was written (Apr 2020) after beginning to identify parameters involved in behavioral flexibility from two data sets (great-tailed grackles and New Zealand robins), and prior to incorporating any other data sets into the exploration. *[This preregistration was submitted in ??? 2020 to PCI Ecology for pre-study peer review. - Dominik - let's discuss whether we need pre-study peer review on this]*
 
-### B. HYPOTHESES
+### B. Computational learning models
+
+Looking to infer cognition (i.e. behavioral flexibility) from behavior, we are faced with a so called inverse problem, i.e. going from (overt) observations to (hidden) causes. This constitutes a problem because typically many different processes can result in the same empirical pattern. By formulating scientific learning models as statisticalmodels, however, we can estimate which parameter values are most
+compatible with the observed choices. Here, we use multilevel reinforcement learning models to analyze data from reversal learning experiments. From trial to trial, such models update the latent values of both options for the animals based on previous values and recently experienced payoffs. We parameterize our models using two parameters, phi and lambda. Phi describes the weight of recent experience and can be interpreted as the learning or updating rate of an individual. Lambda represents the exploration rate of an individual  and is sometimes also called inverse temperature. This parameter controls how sensitive choices are to differences in tha latent value of both options. As lambda gets larger, choices become more deterministic, as it gets smaller, choices become more exploratory (random choice if lambda equals 0). 
+
+
+### C. HYPOTHESES
 
 #### H1: Behavioral flexibility (measured by reversal learning experiments) can be represented as a combination of parameters, such as learning speed and amount of exploration. These parameters can be used to generate a model that compares flexibility across species without picking up noise that could be due to differences in methodology. 
 
@@ -85,7 +91,7 @@ reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizabl
 **Prediction 2 alternative 2:** If a change in behavior is not the main facilitator of geographic range expansions, and if geographically restricted species require flexibility to be able to remain in their suitable habitat, then we predict that species that have not undergone a rapid range expansion will learn faster and explore more than species that have rapidly expanded. *[I need to make this more distinct from P2 alt 1 - or maybe I can't tell them apart...]*
 
 
-### C. METHODS
+### D. METHODS
 
 #### Planned Sample
 	
@@ -119,7 +125,7 @@ No randomization or counterbalancing is involved in this investigation.
 
 No blinding is involved in this investigation.
 
-### D. ANALYSIS PLAN
+### E. ANALYSIS PLAN
 
 Analyses will be conducted in R (current version `r getRversion()`; @rcoreteam) and Stan (version 2.18, @carpenter2017stan). 
 
@@ -159,25 +165,25 @@ One model will be run for each response variable
 1) Rapidly expanded its geographic range (yes, no)
 
 
-### E. ETHICS
+### F. ETHICS
 
 This research did not require any permits because it uses data that were already collected as part of other investigations.
 
-### F. AUTHOR CONTRIBUTIONS
+### G. AUTHOR CONTRIBUTIONS
 
 **Logan:** Hypothesis development, data collection (from the literature and authors), data analysis and interpretation, write up, revising/editing, materials/funding.
 
 **Deffner:** Hypothesis development, data collection (from the literature and authors), data analysis and interpretation, write up, revising/editing.
 
-### G. FUNDING
+### H. FUNDING
 
 This research is funded by the Department of Human Behavior, Ecology and Culture at the Max Planck Institute for Evolutionary Anthropology.
 
-### H. CONFLICT OF INTEREST DISCLOSURE
+### I. CONFLICT OF INTEREST DISCLOSURE
 
 We, the authors, declare that we have no financial conflicts of interest with the content of this article. CJ Logan is a Recommenders and on the Managing Board at PCI Ecology.
 
-### I. ACKNOWLEDGEMENTS
+### J. ACKNOWLEDGEMENTS
 
 
 
