@@ -5,17 +5,17 @@ author:
 - '[Deffner D](https://www.eva.mpg.de/ecology/staff/dominik-deffner/index.html)^1^'
 date: '`r Sys.Date()`'
 output:
-  pdf_document:
-    keep_tex: yes
-    latex_engine: xelatex
-  md_document: 
-    toc: true
   html_document: 
     toc: true
     toc_depth: 4
     toc_float: 
       collapsed: false
     code_folding: hide 
+  md_document: 
+    toc: true
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
   github_document: 
     toc: true
 bibliography: /Users/corina/GitHub/grackles/Files/MyLibrary.bib
@@ -47,10 +47,10 @@ It is generally thought that behavioral flexibility, the ability to change behav
 
 This preregistration was written (Apr 2020) after beginning to identify parameters involved in behavioral flexibility from two data sets (great-tailed grackles and New Zealand robins), and prior to incorporating any other data sets into the exploration. *[This preregistration was submitted in ??? 2020 to PCI Ecology for pre-study peer review. - Dominik - let's discuss whether we need pre-study peer review on this]*
 
-### B. Computational learning models
+### B. DEFINING AND MEASURING FLEXIBILITY THROUGH COMPUTATIONAL LEARNING MODELS
 
-Looking to infer cognition (i.e. behavioral flexibility) from behavior, we are faced with a so called inverse problem, i.e. going from (overt) observations to (hidden) causes. This constitutes a problem because typically many different processes can result in the same empirical pattern. By formulating scientific learning models as statisticalmodels, however, we can estimate which parameter values are most
-compatible with the observed choices. Here, we use multilevel reinforcement learning models to analyze data from reversal learning experiments. From trial to trial, such models update the latent values of both options for the animals based on previous values and recently experienced payoffs. We parameterize our models using two parameters, phi and lambda. Phi describes the weight of recent experience and can be interpreted as the learning or updating rate of an individual. Lambda represents the exploration rate of an individual  and is sometimes also called inverse temperature. This parameter controls how sensitive choices are to differences in tha latent value of both options. As lambda gets larger, choices become more deterministic, as it gets smaller, choices become more exploratory (random choice if lambda equals 0). 
+Bond and colleagues (2007) identified at least three different, though interrelated, connotations of flexibility in the animal literature. (1) the ability to rapidly modify behavior based on brief experience, (2) being versatile, exploratory, and playful, modifying behavior even when circumstances do not require it and (3) the flexibility to change and reverse behavior patterns. We aim to formulate a computational learning model that captures all 3 dimensions. Looking to infer cognition (i.e. behavioral flexibility) from behavior, we are faced with a so called inverse problem, i.e. going from (overt) observations to (hidden) causes. This constitutes a problem because typically many different processes can result in the same empirical pattern. By formulating scientific learning models as statistical models, however, we can estimate which parameter values are most compatible with the observed choices. Here, we use multilevel Bayesian reinforcement learning models to analyze data from serial reversal learning experiments. From trial to trial, such models update the latent values of different options based on previous values and recently experienced payoffs. We parameterize our models using two parameters, phi and lambda. Phi describes the weight of recent experience and can be interpreted as the learning or updating rate of an individual. This loosely corresponds to the first and third connotation of Bond et al. (2007), the ability to rapidly and adaptively change behavior in light of new experiences. Lambda represents the exploration rate of an individual and is sometimes also called inverse temperature. This closely corresponds to the second connotation of internally generated behavioral variation, exploration or creativity. Technically, this parameter controls how sensitive choices are to differences in tha latent values of both options. As lambda gets larger, choices become more deterministic, as it gets smaller, choices become more exploratory (random choice if lambda equals 0). 
+On top of individual-level parameters, we also aim to include time-varying learning parameters to estimate strategic changes in learning patterns. In particular, flexible animals should be especially exploratory and sensitive to new experiences when reward locations change. After learning the new location, they should explore less and stick with the option that provded successful. Such adaptive temporal dynamics in learning strategies have been observed in human learning experiments, where both phi and lambda changed in the predicted directions after changes in payoffs (Deffner, Kleinow & McElreath, under review).
 
 
 ### C. HYPOTHESES
@@ -154,11 +154,11 @@ reactable(d, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=
 
 1) Learning rate
 
-2) Learning strategies
+2) Exploration rate
 
-3) Exploration
+3) Temporal dynamics in both
 
-One model will be run for each response variable
+All learning parameters are estimated from a series of computational learning model of increasing complexity. A baseline model will only contain individual-level learning parameters. In a second model, we aim to estimate separate parameters for trials before and after reversal. Lastly, we aim to estimate full temporal trends through Gaussian processes. 
 
 *Explanatory variable*
 
