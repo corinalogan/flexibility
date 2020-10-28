@@ -1,0 +1,106 @@
+---
+title: Mechanisms of behavioral flexibility in invasive species
+author: 
+- '[Logan CJ](http://CorinaLogan.com) (Max Planck Institute for Evolutionary Anthropology, corina_logan@eva.mpg.de)'
+date: '`r Sys.Date()`'
+output:
+  html_document: 
+    toc: true
+    toc_depth: 5
+    toc_float: 
+      collapsed: false
+    code_folding: hide 
+  md_document: 
+    toc: true
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
+  github_document: 
+    toc: true
+bibliography: 
+csl: https://raw.githubusercontent.com/corinalogan/grackles/master/Files/behavioral-ecology.csl
+header-includes:
+  - \usepackage[left]{lineno}
+  - \linenumbers
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE) 
+#Make code wrap text so it doesn't go off the page when Knitting to PDF
+
+knitr::opts_chunk$set(echo = TRUE) 
+#sets global options to display code along with the results https://exeter-data-analytics.github.io/LitProg/r-markdown.html
+```
+
+### ABSTRACT
+
+It is hypothsized that behavioral flexibility is required for individuals to invade novel environments. Investigating flexibility in invasive species will elucidate whether flexibility is an independent trait or whether it is related to other traits that may modulate it (Figure 1). Here, I investigate how flexibility works in an invasive species for which more is known about flexibility than in any other species: humans. I will conduct a literature review to determine whether flexibility is linked with other traits and, if so, in which contexts. I will compare whether flexibility works similarly in other invasive species based on a literature review and on data fron an ongoing investigation of flexibility in invasive great-tailed grackles which are currently rapidly expanding their geographic range.
+
+```{r dag, eval=T, warning=F, results='asis', echo=F, include=T}
+library(dagitty)
+#f=flexibility, r=range expansion, c=cognition (inhibition, causal cognition, innovativeness, exploration), p=physiology (body size, hormones, immunity, parasite load)
+dagF <- dagitty("dag{ 
+  flexibility -> invasion
+  flexibility -> cognition -> invasion
+  flexibility -> physiology -> invasion
+ }")
+coordinates(dagF) <- list(x=c(flexibility=0,invasion=2,cognition=1,physiology=1), y=c(flexibility=0,invasion=0,cognition=1,physiology=-1))
+plot(dagF)
+
+#look for back doors (McElreath p.183)
+#there are 2 or 4 open back doors and all pass through f conditioning on f closes all back doors
+#adjustmentSets(dagF, exposure="cognition", outcome="invasion") #output=f, means have to condition on f
+#adjustmentSets(dagF, exposure="physiology", outcome="invasion") #output=f, means have to condition on f 
+
+#analyze for d-separation (whether a varible is blocking another on a path (posttreatment bias)
+#dseparated(dagF, "flexibility", "invasion", "cognition") 
+#false, therefore no variable blocking
+#impliedConditionalIndependencies(dagF) 
+#c _||_ p | f , means: cognition should be independent of physiology conditioning on flexibility
+```
+
+**Figure 1.** Flexibility is hypothesized to cause invasion success, but flexibilty could also be modified by cognition (e.g., inhibition, causal cognition, innovativeness, exploration, social learning) and/or physiology (e.g., body size, immunity, hormones).
+
+
+### INTRODUCTION
+
+Mixed results across species suggest that flexibility is an independent trait (Logan 2016).
+
+### HYPOTHESES
+
+#### H1: flexibility is independent of cognition.
+
+**Prediction 1:** Individuals that are more flexible are not faster to learn to inhibit previously learned responses, do not rely more on causal cognition and social information when solving problems, and are not more innovative, exploratory, persistent, bold, or motor diverse.
+
+**Prediction 1 alternative 1:** Individuals that are more flexible are also faster to learn to inhibit previously learned responses, rely more on causal cognition and social information when solving problems, and are more innovative and exploratory, but are not more persistent, bold, or motor diverse.
+
+**Prediction 1 alternative 2:** Individuals that are more flexible are slower to learn to inhibit previously learned responses, rely less on causal cognition and social information when solving problems, are less innovative and exploratory, and more persistent, bold, and motor diverse.
+
+
+#### H2: flexibility is independent of physiology.
+
+**Prediction 2:** Individuals that are more flexible do not have more testosterone, a higher immune response, a larger parasite load, or a larger body size.
+
+**Prediction 2 alternative 1:** Individuals that are more flexible also have more testosterone, a higher immune response, and a larger parasite load, but not a larger body size.
+
+**Prediction 2 alternative 2:** Individuals that are more flexible have less testosterone, a reduced immune response, a lower parasite load, and a larger body size.
+
+
+#### H3: flexibility is more prevalent in novel environments/circumstances.
+
+
+
+#### H4: flexibility relates to fitness in certain contexts.
+
+
+
+
+### FUNDING
+
+This research is funded by the Department of Human Behavior, Ecology and Culture at the Max Planck Institute for Evolutionary Anthropology.
+
+### ACKNOWLEDGEMENTS
+
+
+### REFERENCES
