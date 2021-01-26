@@ -43,7 +43,7 @@ It is generally thought that behavioral flexibility, the ability to change behav
 
 ### A. STATE OF THE DATA
 
-This preregistration was written (Apr 2020) after beginning to identify parameters involved in behavioral flexibility from two data sets (great-tailed grackles and New Zealand robins), and prior to incorporating any other data sets into the exploration. *[This preregistration was submitted in ??? 2020 to PCI Ecology for pre-study peer review. - Dominik - let's discuss whether we need pre-study peer review on this]*
+This preregistration was written (Apr 2020) after beginning to identify parameters involved in behavioral flexibility from two data sets (great-tailed grackles and North Island robins), and prior to incorporating any other data sets into the exploration.
 
 ### B. DEFINING AND MEASURING FLEXIBILITY THROUGH COMPUTATIONAL LEARNING MODELS
 
@@ -76,6 +76,31 @@ dat<-data.frame(d)
 library(reactable)
 reactable(dat, highlight=TRUE, bordered=FALSE, compact=TRUE, wrap=TRUE, resizable=TRUE)
 ```
+
+```{r figdag, eval=T, warning=F, results='asis', echo=T, include=T}
+library(dagitty)
+library(ggdag)
+library(cowplot)
+
+#c=choices, e=environmental change
+dagC <- dagitty("dag{ 
+  Choices -> EnvChange
+ }")
+coordinates(dagC) <- list(x=c(Choices=0,EnvChange=1), y=c(Choices=0,EnvChange=0))
+#plot(dagC)
+
+dagE <- dagitty("dag{ 
+  EnvChange -> Choices
+ }")
+coordinates(dagE) <- list(x=c(Choices=0,EnvChange=1), y=c(Choices=0,EnvChange=0))
+
+dC <- ggdag(dagC, layout="circle", node_size = 35, text_size = 4, text_col = "white", label_col = "blue") + theme_dag()
+dE <- ggdag(dagE, layout="circle", node_size = 35, text_size = 4, text_col = "white", label_col = "blue") + theme_dag()
+plot_grid(dC,dE, align="v", ncol=1, labels=c('A','B'))
+```
+
+**Figure 1.** How differences in reversal learning experimental designs change how we interpret the model outcomes. A) When the experimental design requires that the individual must pass a particular criterion to be considered to have a preference of one of the two options, then the Choices cause the environmental change (the reversal). B) When the experimental design implements the reversal after a predetermined number of trials, regardless of whether the individual actually prefers the rewarded option, then the environmental change (the reversal) can cause a change in the individual's choices.
+
 
 **Table 2.** Differences in reversal learning experimental designs and how these differences affect the robustness of our model.  
 
