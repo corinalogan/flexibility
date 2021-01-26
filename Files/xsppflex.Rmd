@@ -99,7 +99,7 @@ dE <- ggdag(dagE, layout="circle", node_size = 35, text_size = 4, text_col = "wh
 plot_grid(dC,dE, align="v", ncol=1, labels=c('A','B'))
 ```
 
-**Figure 1.** How differences in reversal learning experimental designs change how we interpret the model outcomes. A) When the experimental design requires that the individual must pass a particular criterion to be considered to have a preference of one of the two options, then the Choices cause the environmental change (the reversal). B) When the experimental design implements the reversal after a predetermined number of trials, regardless of whether the individual actually prefers the rewarded option, then the environmental change (the reversal) can cause a change in the individual's choices.
+**Figure 1.** How differences in reversal learning experimental designs change how we interpret the model outcomes. A) When the experimental design requires that the individual must pass a particular criterion to be considered to have a preference of one of the two options, then the Choices cause the environmental change (the reversal). B) When the experimental design implements the reversal after a predetermined number of trials, regardless of whether the individual actually prefers the rewarded option, then the environmental change (the reversal) can cause a change in the individual's choices (if they respond to the change).
 
 
 **Table 2.** Differences in reversal learning experimental designs and how these differences affect the robustness of our model.  
