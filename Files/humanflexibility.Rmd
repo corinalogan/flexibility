@@ -60,7 +60,7 @@ plot(dagF)
 #c _||_ p | f , means: cognition should be independent of physiology conditioning on flexibility
 ```
 
-**Figure 1.** Flexibility is hypothesized to cause invasion success, but flexibilty could also be modified by cognition (e.g., inhibition, causal cognition, innovativeness, exploration, social learning) and/or physiology (e.g., body size, immunity, hormones).
+**Figure 1.** Flexibility is hypothesized to cause invasion success, but flexibility could also be modified by cognition (e.g., inhibition, causal cognition, innovativeness, exploration, social learning) and/or physiology (e.g., body size, immunity, hormones).
 
 
 ### INTRODUCTION
